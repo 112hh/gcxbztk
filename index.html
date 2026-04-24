@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>工程细胞主题库</title>
+    <meta
+      name="description"
+      content="工程细胞主题库后台页面，包含登录、注册、找回密码、发酵过程数据监测、分析模块和工程细胞服务。"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <svg class="icon-sprite" aria-hidden="true">
+      <symbol id="i-logo" viewBox="0 0 24 24">
+        <path
+          d="M8 4h8m-8 16h8M9 7c2 2 4 2 6 5-2 3-4 3-6 5m6-10c-2 2-4 2-6 5 2 3 4 3 6 5"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-user" viewBox="0 0 24 24">
+        <path
+          d="M12 13a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm-7 7a7 7 0 0 1 14 0"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24">
+        <path
+          d="M7 10V8a5 5 0 0 1 10 0v2m-9 0h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1Zm4 4v3"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-eye" viewBox="0 0 24 24">
+        <path
+          d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Zm10 3a3 3 0 1 0-3-3 3 3 0 0 0 3 3Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-eye-off" viewBox="0 0 24 24">
+        <path
+          d="m3 3 18 18m-8.7-8.7a3 3 0 0 0 4.2 4.2M9.9 9.9A3 3 0 0 1 14 14M6.7 6.7A13.1 13.1 0 0 0 2 12s3.5 6 10 6a10.6 10.6 0 0 0 4.4-.9M10 6.2a10.6 10.6 0 0 1 2-.2c6.5 0 10 6 10 6a14.4 14.4 0 0 1-3 3.7"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-check" viewBox="0 0 24 24">
+        <path
+          d="m5 12 4.2 4.2L19 6.5"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-arrow-left" viewBox="0 0 24 24">
+        <path
+          d="m14 6-6 6 6 6m-6-6h12"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-building" viewBox="0 0 24 24">
+        <path
+          d="M4 20h16M7 20V7h6v13M13 20v-9h4v9M9.5 10h1m-1 3h1m-1 3h1"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-image" viewBox="0 0 24 24">
+        <path
+          d="M5 6h14a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Zm1 9 3.5-3.5 3 3L15.5 11 19 15M9 10a1.25 1.25 0 1 0-1.25-1.25A1.25 1.25 0 0 0 9 10Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-list" viewBox="0 0 24 24">
+        <path
+          d="M9 7h10M9 12h10M9 17h10M5 7h.01M5 12h.01M5 17h.01"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24">
+        <path
+          d="M12 7v5l3 2m6-2a9 9 0 1 1-9-9 9 9 0 0 1 9 9Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-chip" viewBox="0 0 24 24">
+        <path
+          d="M9 9h6v6H9Zm3-6v3m0 12v3M3 12h3m12 0h3M6 6l2 2m8 8 2 2m0-12-2 2m-8 8-2 2"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-bio" viewBox="0 0 24 24">
+        <path
+          d="M7 4h10M7 20h10M8.5 4.5v5.2a5.5 5.5 0 1 0 7 0V4.5"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-bars" viewBox="0 0 24 24">
+        <path
+          d="M6 18V9m6 9V5m6 13v-7"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-chart" viewBox="0 0 24 24">
+        <path
+          d="M4 19h16M7 16l4-4 3 2 4-6"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24">
+        <path
+          d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-chevron" viewBox="0 0 24 24">
+        <path
+          d="m8 10 4 4 4-4"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24">
+        <path
+          d="M12 5v14M5 12h14"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-home" viewBox="0 0 24 24">
+        <path
+          d="M4 10.5 12 4l8 6.5V20H4Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24">
+        <path
+          d="M4 7h16M4 12h16M4 17h16"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-search" viewBox="0 0 24 24">
+        <path
+          d="m20 20-3.8-3.8M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-filter" viewBox="0 0 24 24">
+        <path
+          d="M4 5h16l-6 7v6l-4 1v-7Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-settings" viewBox="0 0 24 24">
+        <path
+          d="m9.5 4 .7 1.9a6.5 6.5 0 0 1 3.6 0L14.5 4m3 2.2 1.6 1.1-1 1.7a6.7 6.7 0 0 1 1.3 3.1l1.9.3v1.9l-1.9.3a6.7 6.7 0 0 1-1.3 3.1l1 1.7-1.6 1.1-1.4-1.3a6.5 6.5 0 0 1-3.2 1.3L14.5 20h-1.9l-.3-1.9a6.5 6.5 0 0 1-3.2-1.3l-1.4 1.3-1.6-1.1 1-1.7a6.7 6.7 0 0 1-1.3-3.1L4 14.4v-1.9l1.9-.3a6.7 6.7 0 0 1 1.3-3.1l-1-1.7 1.6-1.1 1.4 1.3a6.5 6.5 0 0 1 3.2-1.3L12.6 4Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.3"
+        />
+        <circle cx="12" cy="13.5" r="2.8" fill="none" stroke="currentColor" stroke-width="1.8" />
+      </symbol>
+      <symbol id="i-close" viewBox="0 0 24 24">
+        <path
+          d="M6 6l12 12M18 6 6 18"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-calendar" viewBox="0 0 24 24">
+        <path
+          d="M7 3v3m10-3v3M5 8h14M6 5h12a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-download" viewBox="0 0 24 24">
+        <path
+          d="M12 4v10m0 0 4-4m-4 4-4-4M5 19h14"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-upload" viewBox="0 0 24 24">
+        <path
+          d="M12 20V10m0 0 4 4m-4-4-4 4M5 5h14"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-file" viewBox="0 0 24 24">
+        <path
+          d="M8 3h6l4 4v14H8a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Zm6 0v4h4M10 12h6M10 16h6"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-warning" viewBox="0 0 24 24">
+        <path
+          d="M12 4 3.5 19h17Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+        <path
+          d="M12 10v4m0 3h.01"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-folder" viewBox="0 0 24 24">
+        <path
+          d="M4 7h5l2 2h9v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-table" viewBox="0 0 24 24">
+        <path
+          d="M4 5h16v14H4Zm0 5h16M9 5v14M15 5v14"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-doc" viewBox="0 0 24 24">
+        <path
+          d="M7 4h10a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm3 4h4m-4 4h6m-6 4h6"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+      <symbol id="i-info" viewBox="0 0 24 24">
+        <path
+          d="M12 17v-5m0-4h.01M21 12a9 9 0 1 1-9-9 9 9 0 0 1 9 9Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.8"
+        />
+      </symbol>
+    </svg>
+
+    <div class="app-shell">
+      <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+      <header class="mobile-topbar">
+        <button class="mobile-menu-button" id="mobileMenuButton" type="button" aria-label="打开菜单">
+          <svg aria-hidden="true" focusable="false">
+            <use href="#i-menu"></use>
+          </svg>
+        </button>
+        <div class="mobile-topbar-copy">
+          <p class="mobile-brand-title">工程细胞主题库</p>
+          <p class="mobile-view-title" id="mobileViewTitle"></p>
+        </div>
+      </header>
+      <aside class="sidebar" id="sidebar"></aside>
+      <main class="workspace" id="viewRoot"></main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

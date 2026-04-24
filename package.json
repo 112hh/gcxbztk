@@ -1,0 +1,16 @@
+{
+  "name": "engineering-cell-admin-template",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Engineering cell admin template",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "xlsx": "^0.18.5"
+  }
+}

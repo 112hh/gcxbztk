@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: engineering-cell-admin-template
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: 22.13.0
+      - key: DATA_DIR
+        value: /var/data
+    disk:
+      name: app-data
+      mountPath: /var/data
+      sizeGB: 1
